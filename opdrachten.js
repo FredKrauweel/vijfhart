@@ -4,14 +4,16 @@
 /*sheet79();
 sheet80();
 sheet81();
-sheet82();*/
-sheet100();
+sheet82();
+sheet100();*/
+sheet103();
 
 /*
 /* Opdracht sheet 79
  */
 function sheet79() {
   console.log('Vermenigvuldigen met met 2 of meer getallen')
+
   function maal(a, b) {
     a = a || 0;
     b = b || 1;
@@ -94,29 +96,74 @@ function sheet82() {
   console.log(totaal(1)); // 4
   console.log(totaal(2)); // 6
 
-}/*
-/* Opdracht sheet 82
+}
+
+/*
+/* Opdracht sheet 100
  */
 function sheet100() {
   console.log('Object')
 
-  function Mijnobject(intro,namen){
-    this.intro=intro; this.namen=namen;
+  function Mijnobject(intro, namen) {
+    this.intro = intro;
+    this.namen = namen;
   }
 
   var mijnObject = new Mijnobject
   (
     "De deelnemers zijn: ",
-      ["Vlad", "Simon", "Sherita", "Fred"]
+    ["Vlad", "Simon", "Sherita", "Fred"]
   );
 
-  Mijnobject.prototype.toon = function(){
+  Mijnobject.prototype.toon = function () {
     var txt = this.intro;
     txt += this.namen.sort().join(", ");
     return txt;
   };
 
   console.log(mijnObject.toon());
+
+  console.log('Class')
+
+  class MijnTweedeObject {
+    constructor(intro, namen) { // geen keyword function
+      this.intro = intro;
+      this.namen = namen;
+    }
+
+    toon() { // geen keyword function
+      var txt = this.intro;
+      txt += this.namen.sort().join(", ");
+      return txt;
+    }
+  }
+
+  var mijnTweedeObject = new MijnTweedeObject
+  (
+    "De deelnemers zijn ook nog: ",
+    ["Celine", "Marleen", "Albert", "Paul"]
+  );
+
+  console.log(mijnTweedeObject.toon());
+}
+
+/*
+/* Opdracht sheet 103
+ */
+function sheet103() {
+  console.log('date manupulation')
+
+  Date.prototype.nl = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+  Date.prototype.formatDate = function(date){
+   d = date.getDate();
+  m = this.nl[date.getMonth()];
+   y = date.getFullYear();
+    return d + " " + m + " " + y;
+  }
+  let d = new Date();
+  console.log('datum:  ', d);
+  console.log('nl datum:  ', d.formatDate(d));
+
 
 
 }
