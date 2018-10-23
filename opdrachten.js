@@ -6,6 +6,8 @@ sheet80();
 sheet81();
 sheet82();
 sheet100();*/
+sheet101();
+sheet102();
 sheet103();
 
 /*
@@ -148,22 +150,62 @@ function sheet100() {
 }
 
 /*
+/* Opdracht sheet 101
+ */
+function sheet101() {
+  console.log('date manupulation')
+  var namen = ["Jan", "Pier", "Joris", "Corneel"];
+  console.log("origineel: ", namen.join());
+  var eerste = namen.shift();
+  namen.splice(1, 0, eerste);
+  console.log("eerste 2 verwisseld: ", namen.join());
+  namen.splice(2, 1, "JORIS");
+  console.log("3e naam gewijzigd: ", namen.join());
+}
+
+/*
+/* Opdracht sheet 102
+ */
+function sheet102() {
+
+  class Boek {
+    constructor(auteur, titel) {
+      this.auteur = auteur;
+      this.titel = titel;
+
+    }
+    toString() {
+      return this.auteur + ": " + this.titel;
+    }
+  }
+
+  var boeken = [];
+  boeken.push(new Boek("Jan", "Het leven van Jan"));
+  boeken.unshift(new Boek("Piet", "Het leven van Piet"));
+  boeken.splice(1, 0, new Boek("Klaas", "Het leven van Klaas"));
+  boeken.forEach(b => console.log(b.toString()));
+  boeken.sort((a, b) => a.titel < b.titel ? -1 : a.titelt > b.titel ? 1 : 0);
+  console.log(boeken.map(b => b.auteur).join());
+  boeken.filter(b => b.auteur == 'Piet').forEach(b => console.log(b.toString()));
+
+}
+
+/*
 /* Opdracht sheet 103
  */
 function sheet103() {
   console.log('date manupulation')
 
   Date.prototype.nl = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
-  Date.prototype.formatDate = function(date){
-   d = date.getDate();
-  m = this.nl[date.getMonth()];
-   y = date.getFullYear();
+  Date.prototype.formatDate = function (date) {
+    d = date.getDate();
+    m = this.nl[date.getMonth()];
+    y = date.getFullYear();
     return d + " " + m + " " + y;
   }
   let d = new Date();
   console.log('datum:  ', d);
   console.log('nl datum:  ', d.formatDate(d));
-
 
 
 }
