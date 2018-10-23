@@ -1,10 +1,11 @@
 /*
 /* Opdracht sheet 80
  */
-sheet79();
+/*sheet79();
 sheet80();
 sheet81();
-sheet82();
+sheet82();*/
+sheet100();
 
 /*
 /* Opdracht sheet 79
@@ -92,4 +93,30 @@ function sheet82() {
   console.log(totaal(3)); // 3
   console.log(totaal(1)); // 4
   console.log(totaal(2)); // 6
+
+}/*
+/* Opdracht sheet 82
+ */
+function sheet100() {
+  console.log('Object')
+
+  function Mijnobject(intro,namen){
+    this.intro=intro; this.namen=namen;
+  }
+
+  var mijnObject = new Mijnobject
+  (
+    "De deelnemers zijn: ",
+      ["Vlad", "Simon", "Sherita", "Fred"]
+  );
+
+  Mijnobject.prototype.toon = function(){
+    var txt = this.intro;
+    txt += this.namen.sort().join(", ");
+    return txt;
+  };
+
+  console.log(mijnObject.toon());
+
+
 }
