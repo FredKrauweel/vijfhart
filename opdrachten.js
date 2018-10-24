@@ -319,7 +319,7 @@ function sheet130() {
   let output = document.getElementById('uitvoer');
   input.addEventListener('change',
     function (e) {
-    let tekst = e.target.value;
+      let tekst = e.target.value;
       output.textContent = tekst.toUpperCase();
     }, false);
 }
@@ -327,10 +327,12 @@ function sheet130() {
 function sheet131() {
   console.log('lijst vullen met data');
 
+/*
   class DataFiller {
     constructor(namen) { // geen keyword function
       this.namen = namen;
     }
+
     toon() { // geen keyword function
 
       let txt = this.namen.sort().join(", ");
@@ -375,12 +377,50 @@ function sheet131() {
     function () {
       ;
       dataFiller.add(this.value);
-      namen.value='';
+      namen.value = '';
     }, false);
 
-  document.addEventListener("DOMContentLoaded", function() {
-   dataFiller.toList();
+  document.addEventListener("DOMContentLoaded", function () {
+    dataFiller.toList();
   });
+*/
+
+
+  let object = {
+    namen: [],
+    add: function (...naam) {
+      naam.forEach(x => this.namen.push(x));
+    },
+    toList: function () {
+      this.namen.sort();
+      return this.namen.map(naam =>
+        `<li>${naam}</li>`).join("");
+
+    }
+  }
+
+  let lijst = document.querySelector("ul");
+  let input = document.querySelector("#namen");
+
+  input.addEventListener("change", function (e) {
+    let tekst = e.target.value;
+    object.add(tekst);
+    lijst.innerHTML = object.toList();
+    e.target.value = "";
+    e.target.focus();
+  })
+
+
+ // object.add("Jan", "Piert", "Joris", "Corneel");
+
+  /*  object.add("Jan");
+    object.add("Piert");
+    object.add("Joris");
+    object.add("Corneel");*/
+  console.log(object.namen);
+  console.log(object.toList());
+
+
 }
 
 function sheet132() {
@@ -390,13 +430,13 @@ function sheet132() {
   let getal2 = document.getElementById('getal2');
   let knop = document.getElementById('bereken');
 
-  knop.addEventListener("click",function(e){
+  knop.addEventListener("click", function (e) {
     let a = parseFloat(getal1.value);
     let b = parseFloat(getal2.value);
-    if(isNaN(a) || isNaN(b)){
+    if (isNaN(a) || isNaN(b)) {
       som.textContent = "Geen geldige input";
     } else {
-      som.textContent = a+b;
+      som.textContent = a + b;
     }
 
   });
