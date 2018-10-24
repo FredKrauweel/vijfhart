@@ -301,10 +301,13 @@ function sheet129() {
       let txt = document.getElementById('lipTxt');
       if (txt.classList.contains('zichtbaar')) {
         txt.classList.replace('zichtbaar', 'verborgen');
+        btnToggle.textContent = 'Toon';
       } else if (txt.classList.contains('verborgen')) {
         txt.classList.replace('verborgen', 'zichtbaar');
+        btnToggle.textContent = 'Verberg';
       } else {
         txt.classList.add('verborgen');
+        btnToggle.textContent = 'Toon';
       }
     }, false);
 }
