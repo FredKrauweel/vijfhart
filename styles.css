@@ -1,7 +1,16 @@
-table, th, td {
-  border: 1px solid black;
+table {
+  border-collapse: collapse;
 }
 
-table {
-  width: 300px;
+tr#totaal {
+  border-top: solid;
+  border-width: 1px 0;
+}
+
+.zichtbaar {
+  visibility: visible;
+}
+
+.onzichtbaar {
+  visibility: hidden;
 }
