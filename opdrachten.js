@@ -314,11 +314,12 @@ function sheet129() {
 
 function sheet130() {
   console.log('change-event');
-  let invoer = document.getElementById('invoer');
-  let uitvoer = document.getElementById('uitvoer');
-  invoer.addEventListener('change',
-    function () {
-      uitvoer.textContent = invoer.value.toUpperCase();
+  let input = document.getElementById('invoer');
+  let output = document.getElementById('uitvoer');
+  input.addEventListener('change',
+    function (e) {
+    let tekst = e.target.value;
+      output.textContent = tekst.toUpperCase();
     }, false);
 }
 
