@@ -9,14 +9,15 @@ sheet100();
 sheet101();
 sheet102();
 sheet103();
-sheet116();*/
-sheet129();
+sheet116();
+sheet129();*/
+sheet130();
 
 /*
 /* Opdracht sheet 79
  */
 function sheet79() {
-  console.log('Vermenigvuldigen met met 2 of meer getallen')
+  console.log('Vermenigvuldigen met met 2 of meer getallen');
 
   function maal(a, b) {
     a = a || 0;
@@ -282,26 +283,39 @@ function sheet116() {
   }
 
   var mijnlijst = document.createElement("ul");
-  artikelen.forEach(((a,i) => mijnlijst.appendChild(
-    maakItem(a,i)
+  artikelen.forEach(((a, i) => mijnlijst.appendChild(
+    maakItem(a, i)
   )));
 
   document.body.appendChild(mijnlijst);
 }
 
 function sheet129() {
-  console.log('toggle event op button')
+  console.log('toggle event op button');
 
   let btnToggle = document.getElementById('btnToggle');
   btnToggle.addEventListener("click",
-    function(){ console.log("btnToggle geklikt" );
-        let txt = document.getElementById('lipTxt');
-        if (txt.classList.contains('zichtbaar')) {
-          txt.classList.replace('zichtbaar','verborgen');
-        } else if (txt.classList.contains('verborgen')) {
-          txt.classList.replace('verborgen','zichtbaar');
-        } else {
-          txt.classList.add('verborgen');
-        }
+    function () {
+      console.log("btnToggle geklikt");
+      let txt = document.getElementById('lipTxt');
+      if (txt.classList.contains('zichtbaar')) {
+        txt.classList.replace('zichtbaar', 'verborgen');
+      } else if (txt.classList.contains('verborgen')) {
+        txt.classList.replace('verborgen', 'zichtbaar');
+      } else {
+        txt.classList.add('verborgen');
+      }
     }, false);
+}
+
+function sheet130() {
+  console.log('change-event');
+  let invoer = document.getElementById('invoer');
+  let uitvoer = document.getElementById('uitvoer');
+  invoer.addEventListener('change',
+    function () {
+      uitvoer.textContent = invoer.value.toUpperCase();
+    }, false);
+
+
 }
