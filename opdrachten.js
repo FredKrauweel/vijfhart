@@ -327,7 +327,7 @@ function sheet130() {
 function sheet131() {
   console.log('lijst vullen met data');
 
-/*
+
   class DataFiller {
     constructor(namen) { // geen keyword function
       this.namen = namen;
@@ -348,7 +348,7 @@ function sheet131() {
     }
 
     toList() {
-      let lijst = document.getElementById('namenlijst');
+      let lijst = document.getElementById('mijnnamenlijst');
       while (lijst.firstChild) {
         lijst.removeChild(lijst.firstChild);
       }
@@ -373,9 +373,8 @@ function sheet131() {
 
   console.log(dataFiller.toon());
 
-  document.getElementById('namen').addEventListener('change',
+  document.getElementById('mijnnamen').addEventListener('change',
     function () {
-      ;
       dataFiller.add(this.value);
       namen.value = '';
     }, false);
@@ -383,8 +382,6 @@ function sheet131() {
   document.addEventListener("DOMContentLoaded", function () {
     dataFiller.toList();
   });
-*/
-
 
   let object = {
     namen: [],
@@ -395,11 +392,10 @@ function sheet131() {
       this.namen.sort();
       return this.namen.map(naam =>
         `<li>${naam}</li>`).join("");
-
     }
   }
 
-  let lijst = document.querySelector("ul");
+  let lijst = document.querySelector("#namenlijst");
   let input = document.querySelector("#namen");
 
   input.addEventListener("change", function (e) {
@@ -410,13 +406,6 @@ function sheet131() {
     e.target.focus();
   })
 
-
- // object.add("Jan", "Piert", "Joris", "Corneel");
-
-  /*  object.add("Jan");
-    object.add("Piert");
-    object.add("Joris");
-    object.add("Corneel");*/
   console.log(object.namen);
   console.log(object.toList());
 
