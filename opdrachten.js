@@ -8,8 +8,9 @@ sheet82();
 sheet100();
 sheet101();
 sheet102();
-sheet103();*/
-sheet116();
+sheet103();
+sheet116();*/
+sheet129();
 
 /*
 /* Opdracht sheet 79
@@ -286,4 +287,21 @@ function sheet116() {
   )));
 
   document.body.appendChild(mijnlijst);
+}
+
+function sheet129() {
+  console.log('toggle event op button')
+
+  let btnToggle = document.getElementById('btnToggle');
+  btnToggle.addEventListener("click",
+    function(){ console.log("btnToggle geklikt" );
+        let txt = document.getElementById('lipTxt');
+        if (txt.classList.contains('zichtbaar')) {
+          txt.classList.replace('zichtbaar','verborgen');
+        } else if (txt.classList.contains('verborgen')) {
+          txt.classList.replace('verborgen','zichtbaar');
+        } else {
+          txt.classList.add('verborgen');
+        }
+    }, false);
 }
