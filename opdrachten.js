@@ -5,10 +5,11 @@
 sheet80();
 sheet81();
 sheet82();
-sheet100();*/
+sheet100();
 sheet101();
 sheet102();
-sheet103();
+sheet103();*/
+sheet116();
 
 /*
 /* Opdracht sheet 79
@@ -229,7 +230,43 @@ function sheet103() {
   console.log(dag.toString())
 }
 
-function sheet10xx() {
-  console.log('date manupulation')
+function sheet116() {
+  console.log('dom append')
+
+  let producten = [['potlood','1,15'],['pen','3,85'],['lineaal','2,15'],['gum','0,86'],['plakband','1,55']];
+let result = document.getElementById("result");
+  let table = document.createElement("TABLE");
+
+
+
+  for (let i=0; i<producten.length; i++){
+    var row = table.insertRow(i);
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+// Add some text to the new cells:
+    cell1.innerHTML = producten[i][0];
+    cell2.innerHTML = producten[i][1];
+  }
+
+  // Create an empty <thead> element and add it to the table:
+  var header = table.createTHead();
+
+// Create an empty <tr> element and add it to the first position of <thead>:
+  var row = header.insertRow(0);
+
+// Insert a new cell (<td>) at the first position of the "new" <tr> element:
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+
+// Add some bold text in the new cell:
+  cell1.innerHTML = "<b>Product</b>";
+  cell2.innerHTML = "<b>Prijs</b>";
+
+
+
+  result.appendChild(table);
 
 }
