@@ -8,14 +8,18 @@ sheet82();
 sheet100();
 sheet101();
 sheet102();
-sheet103();*/
-sheet116();
+sheet103();
+sheet116();*/
+sheet129();
+sheet130();
+sheet131();
+sheet132();
 
 /*
 /* Opdracht sheet 79
  */
 function sheet79() {
-  console.log('Vermenigvuldigen met met 2 of meer getallen')
+  console.log('Vermenigvuldigen met met 2 of meer getallen');
 
   function maal(a, b) {
     a = a || 0;
@@ -281,9 +285,149 @@ function sheet116() {
   }
 
   var mijnlijst = document.createElement("ul");
-  artikelen.forEach(((a,i) => mijnlijst.appendChild(
-    maakItem(a,i)
+  artikelen.forEach(((a, i) => mijnlijst.appendChild(
+    maakItem(a, i)
   )));
 
   document.body.appendChild(mijnlijst);
+}
+
+function sheet129() {
+  console.log('toggle event op button');
+
+  let btnToggle = document.getElementById('btnToggle');
+  btnToggle.addEventListener("click",
+    function () {
+      console.log("btnToggle geklikt");
+      let txt = document.getElementById('lipTxt');
+      if (txt.classList.contains('zichtbaar')) {
+        txt.classList.replace('zichtbaar', 'verborgen');
+        btnToggle.textContent = 'Toon';
+      } else if (txt.classList.contains('verborgen')) {
+        txt.classList.replace('verborgen', 'zichtbaar');
+        btnToggle.textContent = 'Verberg';
+      } else {
+        txt.classList.add('verborgen');
+        btnToggle.textContent = 'Toon';
+      }
+    }, false);
+}
+
+function sheet130() {
+  console.log('change-event');
+  let input = document.getElementById('invoer');
+  let output = document.getElementById('uitvoer');
+  input.addEventListener('change',
+    function (e) {
+      let tekst = e.target.value;
+      output.textContent = tekst.toUpperCase();
+    }, false);
+}
+
+function sheet131() {
+  console.log('lijst vullen met data');
+
+
+  class DataFiller {
+    constructor(namen) { // geen keyword function
+      this.namen = namen;
+    }
+
+    toon() { // geen keyword function
+
+      let txt = this.namen.sort().join(", ");
+      return txt;
+    }
+
+    add(naam) {
+      console.log("toevoegen");
+      this.namen.push(naam);
+      this.toList();
+
+      console.log(this.namen);
+    }
+
+    toList() {
+      let lijst = document.getElementById('mijnnamenlijst');
+      while (lijst.firstChild) {
+        lijst.removeChild(lijst.firstChild);
+      }
+      this.namen.forEach(((a, i) => lijst.appendChild(
+        maakLi(a, i)
+      )));
+
+      function maakLi(naam, index) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(naam));
+        li.setAttribute("data-nr", index);
+        return li;
+      }
+
+    }
+  }
+
+  var dataFiller = new DataFiller
+  (
+    ["Celine", "Marleen", "Albert", "Paul"]
+  );
+
+  console.log(dataFiller.toon());
+
+  document.getElementById('mijnnamen').addEventListener('change',
+    function () {
+      dataFiller.add(this.value);
+      namen.value = '';
+    }, false);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    dataFiller.toList();
+  });
+
+  let object = {
+    namen: [],
+    add: function (...naam) {
+      naam.forEach(x => this.namen.push(x));
+    },
+    toList: function () {
+      this.namen.sort();
+      return this.namen.map(naam =>
+        `<li>${naam}</li>`).join("");
+    }
+  }
+
+  let lijst = document.querySelector("#namenlijst");
+  let input = document.querySelector("#namen");
+
+  input.addEventListener("change", function (e) {
+    let tekst = e.target.value;
+    object.add(tekst);
+    lijst.innerHTML = object.toList();
+    e.target.value = "";
+    e.target.focus();
+  })
+
+  console.log(object.namen);
+  console.log(object.toList());
+
+
+}
+
+function sheet132() {
+  console.log('validatie');
+
+  let getal1 = document.getElementById('getal1');
+  let getal2 = document.getElementById('getal2');
+  let knop = document.getElementById('bereken');
+
+  knop.addEventListener("click", function (e) {
+    let a = parseFloat(getal1.value);
+    let b = parseFloat(getal2.value);
+    if (isNaN(a) || isNaN(b)) {
+      som.textContent = "Geen geldige input";
+    } else {
+      som.textContent = a + b;
+    }
+
+  });
+
 }
