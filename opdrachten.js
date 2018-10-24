@@ -9,9 +9,10 @@ sheet100();
 sheet101();
 sheet102();
 sheet103();
-sheet116();
-sheet129();*/
+sheet116();*/
+sheet129();
 sheet130();
+sheet131();
 
 /*
 /* Opdracht sheet 79
@@ -316,6 +317,63 @@ function sheet130() {
     function () {
       uitvoer.textContent = invoer.value.toUpperCase();
     }, false);
+}
 
+function sheet131() {
+  console.log('lijst vullen met data');
 
+  class DataFiller {
+    constructor(namen) { // geen keyword function
+      this.namen = namen;
+    }
+    toon() { // geen keyword function
+
+      let txt = this.namen.sort().join(", ");
+      return txt;
+    }
+
+    add(naam) {
+      console.log("toevoegen");
+      this.namen.push(naam);
+      this.toList();
+
+      console.log(this.namen);
+    }
+
+    toList() {
+      let lijst = document.getElementById('namenlijst');
+      while (lijst.firstChild) {
+        lijst.removeChild(lijst.firstChild);
+      }
+      this.namen.forEach(((a, i) => lijst.appendChild(
+        maakLi(a, i)
+      )));
+
+      function maakLi(naam, index) {
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(naam));
+        li.setAttribute("data-nr", index);
+        return li;
+      }
+
+    }
+  }
+
+  var dataFiller = new DataFiller
+  (
+    ["Celine", "Marleen", "Albert", "Paul"]
+  );
+
+  console.log(dataFiller.toon());
+
+  document.getElementById('namen').addEventListener('change',
+    function () {
+      ;
+      dataFiller.add(this.value);
+      namen.value='';
+    }, false);
+
+  document.addEventListener("DOMContentLoaded", function() {
+   dataFiller.toList();
+  });
 }
