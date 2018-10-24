@@ -174,6 +174,7 @@ function sheet102() {
       this.titel = titel;
 
     }
+
     toString() {
       return this.auteur + ": " + this.titel;
     }
@@ -207,5 +208,28 @@ function sheet103() {
   console.log('datum:  ', d);
   console.log('nl datum:  ', d.formatDate(d));
 
+  console.log("netjes");
+
+  class Datum {
+    constructor(dag, maand, jaar) {
+      this.dag = new Date(jaar, maand - 1, dag);
+    }
+    toString() {
+      return this.dag.getDate() + " " +
+        Datum.maanden[this.dag.getMonth()] + " " +
+        this.dag.getFullYear();
+    }
+    static get maanden(){
+      return ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+    }
+  }
+
+  //Datum.prototype.maanden = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+  var dag = new Datum(1, 1, 2018);
+  console.log(dag.toString())
+}
+
+function sheet10xx() {
+  console.log('date manupulation')
 
 }
