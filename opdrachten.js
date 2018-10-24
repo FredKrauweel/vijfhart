@@ -13,6 +13,7 @@ sheet116();*/
 sheet129();
 sheet130();
 sheet131();
+sheet132();
 
 /*
 /* Opdracht sheet 79
@@ -380,4 +381,24 @@ function sheet131() {
   document.addEventListener("DOMContentLoaded", function() {
    dataFiller.toList();
   });
+}
+
+function sheet132() {
+  console.log('validatie');
+
+  let getal1 = document.getElementById('getal1');
+  let getal2 = document.getElementById('getal2');
+  let knop = document.getElementById('bereken');
+
+  knop.addEventListener("click",function(e){
+    let a = parseFloat(getal1.value);
+    let b = parseFloat(getal2.value);
+    if(isNaN(a) || isNaN(b)){
+      som.textContent = "Geen geldige input";
+    } else {
+      som.textContent = a+b;
+    }
+
+  });
+
 }
