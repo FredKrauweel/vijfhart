@@ -215,12 +215,14 @@ function sheet103() {
     constructor(dag, maand, jaar) {
       this.dag = new Date(jaar, maand - 1, dag);
     }
+
     toString() {
       return this.dag.getDate() + " " +
         Datum.maanden[this.dag.getMonth()] + " " +
         this.dag.getFullYear();
     }
-    static get maanden(){
+
+    static get maanden() {
       return ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
     }
   }
@@ -233,13 +235,12 @@ function sheet103() {
 function sheet116() {
   console.log('dom append')
 
-  let producten = [['potlood','1,15'],['pen','3,85'],['lineaal','2,15'],['gum','0,86'],['plakband','1,55']];
-let result = document.getElementById("result");
+  let producten = [['potlood', '1,15'], ['pen', '3,85'], ['lineaal', '2,15'], ['gum', '0,86'], ['plakband', '1,55']];
+  let result = document.getElementById("result");
   let table = document.createElement("TABLE");
 
 
-
-  for (let i=0; i<producten.length; i++){
+  for (let i = 0; i < producten.length; i++) {
     var row = table.insertRow(i);
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
@@ -266,7 +267,23 @@ let result = document.getElementById("result");
   cell2.innerHTML = "<b>Prijs</b>";
 
 
-
   result.appendChild(table);
 
+
+  let artikelen = [['potlood', '1,15'], ['pen', '3,85'], ['lineaal', '2,15'], ['gum', '0,86'], ['plakband', '1,55']];
+  artikelen.sort();
+
+  function maakItem(naam, index) {
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(naam));
+    li.setAttribute("data-nr", index);
+    return li;
+  }
+
+  var mijnlijst = document.createElement("ul");
+  artikelen.forEach(((a,i) => mijnlijst.appendChild(
+    maakItem(a,i)
+  )));
+
+  document.body.appendChild(mijnlijst);
 }
