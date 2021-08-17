@@ -416,7 +416,7 @@ function sheet132() {
   console.log('validatie');
 
   let getal1 = document.getElementById('getal1');
-  let getal2 = document.getElementById('getal2');
+  let getal2 = document.getElementById('getal2');x
   let knop = document.getElementById('bereken');
 
   knop.addEventListener("click", function (e) {

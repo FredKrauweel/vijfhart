@@ -1,7 +1,5 @@
 var simon = true;
 
-
-
 function simon() {
     if (simon === true) {
         /*
